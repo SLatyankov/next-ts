@@ -11,6 +11,33 @@ a {
   text-decoration: none;
 }
 
-* {
+*,
+*:after,
+*:before {
   box-sizing: border-box;
 }
+
+.nav {
+  height: 60px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-bottom: 1px solid #156;
+}
+
+.main {
+  margin-top: 61px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.box_auth {
+  margin: 0 auto;
+  text-align: center;
+}
+
