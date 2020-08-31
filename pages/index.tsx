@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { GetServerSideProps } from 'next';
 import HomePage from './home';
 import AuthPage from './authorisation';
+import { nameRef } from '../firebase';
 
 type Props = {
   name: string;
@@ -27,11 +28,14 @@ const Home: React.FC<Props> = ({ name }) => {
 
 export default Home;
 
-export const getServerSideProps: GetServerSideProps<Props> = async ({ query }) => {
-  const name = query.name instanceof Array ? query.name.join(',') : query.name;
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  let nameText = '';
+  nameRef.on('value', (snapshot) => {
+    nameText = snapshot.val();
+  });
   return {
     props: {
-      name: name || 'World',
+      name: nameText || 'World',
     },
   };
 };
