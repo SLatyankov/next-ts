@@ -29,7 +29,6 @@ export default Home;
 
 export const getServerSideProps: GetServerSideProps<Props> = async ({ query }) => {
   const name = query.name instanceof Array ? query.name.join(',') : query.name;
-  console.log(query);
   return {
     props: {
       name: name || 'World',
